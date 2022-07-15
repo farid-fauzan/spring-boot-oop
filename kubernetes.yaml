@@ -1,0 +1,112 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: barang-kiriman-service
+  namespace: barangkiriman
+  labels:
+    app-type: java
+spec:
+  type: LoadBalancer
+  selector:
+    app: barang-kiriman-service
+  ports:
+  - protocol: TCP
+    port: 8090
+  #- name: apps
+   # port: 8911
+    #targetPort: 8911
+  #- name: metrics
+   # port: 5550
+    #targetPort: 5550
+
+
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: barang-kiriman-service
+  namespace: barangkiriman
+  labels:
+    app: barang-kiriman-service
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0%
+      maxUnavailable: 25%
+  minReadySeconds: 5
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: barang-kiriman-service
+  template:
+    metadata:
+      labels:
+        app: barang-kiriman-service
+    spec:
+      containers:
+      - name: barang-kiriman-service
+        image: $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:$BUILD_NUMBER
+        ports:
+        - containerPort: 8090
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: "1"
+            memory: "1000Mi"
+          requests:
+            cpu: "0.5"
+            memory: "500Mi"
+        envFrom:
+        - secretRef:
+            name: env-db
+    #     - name: apps
+    #       containerPort: 8911
+    #     - name: metrics
+    #       containerPort: 5550
+    #     imagePullPolicy: Always
+    #     livenessProbe:
+    #       exec:
+    #         command: ["sh", "-c", "curl -s http://localhost:8911/check/connection | grep 1"]
+    #       initialDelaySeconds: 30
+    #       periodSeconds: 20
+    #       timeoutSeconds: 20
+    #       failureThreshold: 2
+    #     resources:
+    #       #limits:
+    #         #cpu: "1"
+    #         #memory: "1000Mi"
+    #       #requests:
+    #         #cpu: "0.5"
+    #         #memory: "500Mi"
+    #     volumeMounts:
+    #     - name: tz-config
+    #       mountPath: /etc/localtime
+    #   volumes:
+    #     - name: tz-config
+    #       hostPath:
+    #         path: /usr/share/zoneinfo/Asia/Jakarta
+
+
+---
+
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: barang-kiriman-service
+  namespace: barangkiriman
+spec:
+  maxReplicas: 4
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: barkir-service
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: 100
