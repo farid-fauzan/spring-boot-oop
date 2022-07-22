@@ -5,8 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Date;
 
 @Setter
 @Getter
@@ -16,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table (name = "informasi", schema = "case_management")
-
 public class Informasi implements Serializable {
 
 //    id_ikhtisar_informasi varchar(250) NULL,
@@ -45,7 +43,8 @@ public class Informasi implements Serializable {
     private String nipRekam;
 //    waktu_rekam timestamp NULL,
     @Column(name = "waktu_rekam", nullable = false)
-    private String waktuRekam;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date waktuRekam;
 
 
 }
