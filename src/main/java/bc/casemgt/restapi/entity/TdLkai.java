@@ -4,7 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Setter
 @Getter
@@ -33,11 +33,35 @@ public class TdLkai implements Serializable {
     private String ikhtisarInformasi;
 
 //    prosedur_analisis text NULL,
+    @Column(name = "prosedur_analisis", nullable = true)
+    private String prosedurAnalisis;
 //    hasil_analisis text NULL,
+
+    @Column(name = "hasil_analisis", nullable = true)
+    private String hasilAnalisis;
 //    kesimpulan text NULL,
+
+    @Column(name = "kesimpulan", nullable = true)
+    private String kesimpulan;
 //    tujuan varchar(250) NULL,
+
+    @Column(name = "tujuan", nullable = true)
+    private String tujuan;
 //    nip_rekam varchar(18) NULL,
+
+    @Column(name = "nip_rekam", nullable = true)
+    private String nipRekam;
 //    waktu_rekam timestamp NULL,
+
+    @Column(name = "waktu_rekam", nullable = true)
+    private String waktuRekam;
 //    nip_update varchar(18) NULL,
+
+    @Column(name = "nip_update", nullable = true)
+    private String nipUpdate;
 //    waktu_update timestamp NULL,
+
+    @Column(name = "waktu_update", nullable = true)
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date waktuUpdate;
 }

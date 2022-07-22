@@ -5,7 +5,7 @@ import springfox.documentation.spring.web.json.Json;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Setter
 @Getter

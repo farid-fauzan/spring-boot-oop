@@ -5,7 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
+
 
 @Setter
 @Getter
@@ -45,29 +46,29 @@ public class TdDokumen implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date tanggalDokumen;
 //    tanggal_dokumen date NULL,
-    @Column(name = "format_data", nullable = false)
+    @Column(name = "format_data", nullable = true)
     private String formatData;
 //    format_data text NULL,
-    @Column(name = "data_dokumen", nullable = false)
+    @Column(name = "data_dokumen", nullable = true)
     private String dataDokumen;
 //    data_dokumen text NULL,
 //    url text NULL,
-    @Column(name = "text", nullable = false)
-    private String text;
+    @Column(name = "url", nullable = true)
+    private String url;
 //    keterangan text NULL,
-    @Column(name = "keterangan", nullable = false)
+    @Column(name = "keterangan", nullable = true)
     private String keterangan;
 //    nip_rekam varchar(250) NULL,
-    @Column(name = "nip_rekam", nullable = false)
+    @Column(name = "nip_rekam", nullable = true)
     private String nipRekam;
 //    waktu_rekam timestamp NULL,
-    @Column(name = "waktu_rekam", nullable = false)
+    @Column(name = "waktu_rekam", nullable = true)
     private String waktuRekam;
 //    nip_update varchar(250) NULL,
-    @Column(name = "nip_update", nullable = false)
+    @Column(name = "nip_update", nullable = true)
     private String nipUpdate;
 //    waktu_update timestamp NULL
-    @Column(name = "waktu_update", nullable = false)
+    @Column(name = "waktu_update", nullable = true)
     private String waktuUpdate;
 
 }

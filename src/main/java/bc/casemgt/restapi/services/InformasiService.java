@@ -18,8 +18,6 @@ public class InformasiService {
     private InformasiRepository informasiRepository;
 
 
-
-
     public ResponseEntity getDataByid(String idHeader) {
         Map<String, Object> result = new HashMap<>();
         MessageModel msg = new MessageModel();

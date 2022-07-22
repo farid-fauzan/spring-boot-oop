@@ -5,7 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Setter
 @Getter
@@ -38,16 +38,16 @@ public class TdHeader implements Serializable {
     private String nomorDokumen;
 //    tanggal_dokumen date NULL,
 
-    @Column(name = "tanggal_dokumen", nullable = false)
+    @Column(name = "tanggal_dokumen", nullable = true)
     @Temporal(TemporalType.DATE)
     private Date tanggalDokumen;
 //    kode_kantor varchar(6) NULL,
 
-    @Column(name = "kode_kantor",length = 250, nullable = false)
+    @Column(name = "kode_kantor",length = 250, nullable = true)
     private String kodeKantor;
 //    nama_kantor varchar(250) NULL,
 
-    @Column(name = "nama_kantor", length = 250,nullable = false)
+    @Column(name = "nama_kantor", length = 250,nullable = true)
     private String namaKantor;
 //    alamat_kantor varchar(250) NULL,
 
