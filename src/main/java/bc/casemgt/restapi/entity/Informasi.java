@@ -24,25 +24,25 @@ public class Informasi implements Serializable {
     private String idIkhtisarInformasi;
     //    id_probis varchar(250) NULL,
 
-    @Column(name = "id_probis", nullable = false)
+    @Column(name = "id_probis", nullable = true)
     private String idProbis;
     //    id_header varchar(250) NULL,
-    @Column(name = "id_header", nullable = false)
+    @Column(name = "id_header", nullable = true)
     private String idHeader;
 //    informasi text NULL,
-    @Column(name = "informasi", nullable = false)
+    @Column(name = "informasi", nullable = true)
     private String informasi;
 //    kode_sumber varchar(5) NULL,
-    @Column(name = "kode_sumber", nullable = false)
+    @Column(name = "kode_sumber", nullable = true)
     private String kodeSumber;
 //    kode_validitas varchar(5) NULL,
-    @Column(name = "kode_validitas", nullable = false)
+    @Column(name = "kode_validitas", nullable = true)
     private String kodeValiditas;
 //    nip_rekam varchar(250) NULL,
-    @Column(name = "nip_rekam", nullable = false)
+    @Column(name = "nip_rekam", nullable = true)
     private String nipRekam;
 //    waktu_rekam timestamp NULL,
-    @Column(name = "waktu_rekam", nullable = false)
+    @Column(name = "waktu_rekam", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     private Date waktuRekam;
 
