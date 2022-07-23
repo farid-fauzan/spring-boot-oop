@@ -22,7 +22,7 @@ public class TdLppi implements Serializable {
     //	id_lppi varchar(250) NOT NULL,
     @Id
     @Column(name = "id_lppi", nullable = false)
-    private String id_lppi;
+    private String idLppi;
 
     //	id_header varchar(250) NULL,
     @Column(name = "id_header", nullable = true)

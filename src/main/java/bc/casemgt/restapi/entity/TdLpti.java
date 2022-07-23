@@ -20,7 +20,7 @@ public class TdLpti implements Serializable {
     //	id_lpti varchar(250) NOT NULL,
     @Id
     @Column(name = "id_lpti", nullable = false)
-    private String id_lpti;
+    private String idLpti;
 
     //	id_header varchar(250) NULL,
 
