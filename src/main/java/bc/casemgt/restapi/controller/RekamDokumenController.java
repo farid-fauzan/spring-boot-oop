@@ -60,7 +60,7 @@ public class RekamDokumenController {
     }
 //    Insert into td_lpti
 
-    @PostMapping("/data/lpti")
+    @PostMapping("/post/lpti")
     private String savelpti(@RequestBody TdLpti lpti)
     {
         rekamDokumenService.saveTdLpti(lpti);
