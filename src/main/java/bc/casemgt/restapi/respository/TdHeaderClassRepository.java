@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,48 +21,21 @@ public class TdHeaderClassRepository {
 
         StringBuilder qb = new StringBuilder();
         if(idHeader !=null ){
-            qb.append(" and idHeader ='"+idHeader+"' \n");
+            qb.append(" and id_header ='"+idHeader+"' \n");
         }
         if(nomorDokumen !=null){
-            qb.append("and nomorDokumen ='"+nomorDokumen+"'\n");
+            qb.append("and nomor_dokumen ='"+nomorDokumen+"'\n");
         }
         if(nipRekam !=null){
-            qb.append("and nipRekam ='"+nipRekam+"'\n");
+            qb.append("and nip_rekam ='"+nipRekam+"'\n");
         }
 
 
         String sisipan = qb.toString();
 
-        Query query = entityManager.createQuery(" select  idHeader,\n" +
-                "      kodeKategori,\n" +
-                "      kodeDokumen,\n" +
-                "      nomorDokumen,\n" +
-                "      tanggalDokumen,\n" +
-                "      kodeKantor,\n" +
-                "      namaKantor,\n" +
-                "      alamatKantor,\n" +
-                "      sifat,\n" +
-                "      klasifikasi,\n" +
-                "      kodeProses,\n" +
-                "      kotaTandaTangan,\n" +
-                "      waktuTandaTangan,\n" +
-                "      nipPenerbit,\n" +
-                "      namaPenerbit,\n" +
-                "       jabatanPenerbit,\n" +
-                "      pangkatGolonganPenerbit,\n" +
-                "      flagPrsetujuan1,\n" +
-                "     Long idPersetujuan1,\n" +
-                "      flagPersetujuan2,\n" +
-                "     Long idPersetujuan2,\n" +
-                "      flagTerbit,\n" +
-                "      keterangan,\n" +
-                "      nipRekam,\n" +
-                "      waktuRekam,\n" +
-                "      nipUp,\n" +
-                "      waktuUp,\n" +
-                "      flagAktif\n" +
-                " FROM TdHeader a \n" +
-                "WHERE 1=1\n"  +
+        Query query = entityManager.createNativeQuery(" SELECT id_header, kode_kategori, kode_dokumen, nomor_dokumen, tanggal_dokumen, kode_kantor, nama_kantor, alamat_kantor, sifat, klasifikasi, kode_proses, kota_tanda_tangan, waktu_tanda_tangan, nip_penerbit, nama_penerbit, jabatan_penerbit, pangkat_golongan_penerbit, flag_persetujuan1, id_persetujuan1, flag_persetujuan2, id_persetujuan2, flag_terbit, keterangan, nip_rekam, waktu_rekam, nip_update, waktu_update, flag_aktif\n" +
+                "FROM case_management.td_header \n" +
+                "WHERE 1=1 \n"  +
                 sisipan
         ).setFirstResult(offset).setMaxResults(10);
         //.setFirstResult(20) // equivalent to OFFSET

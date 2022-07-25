@@ -222,4 +222,11 @@ public class RekamDokumenController {
         ResponseEntity responseEntity = rekamDokumenService.getTugas(idheader);
         return responseEntity;
     }
+
+    @PostMapping("/post/header")
+    private String saveTdHeader(@RequestBody TdHeader header)
+    {
+        rekamDokumenService.saveTdHeader(header);
+        return header.getIdHeader();
+    }
 }

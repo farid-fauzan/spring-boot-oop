@@ -30,7 +30,7 @@ public class SwaggerConfig {
         return new ApiInfo(
                 "REST API Service case-management-service ",
                 "REST API Service case-management-service ",
-                "1.0.0 20220701",
+                "1.0.1 20220726",
                 "Terms of Service",
                 new Contact("Backend Developer case-management-service ","www.beacukai.go.id","testing@beacukai.com"),
                 "License of API","API License URL", Collections.emptyList()

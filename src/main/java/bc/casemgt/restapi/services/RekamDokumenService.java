@@ -478,6 +478,12 @@ public class RekamDokumenService {
             return ResponseEntity.ok().body(msg);
         }
     }
+    @Autowired
+    private TdHeaderRepository tdHeaderRepository;
+    public void saveTdHeader(TdHeader header)
+    {
+        tdHeaderRepository.save(header);
+    }
 
 
 }
