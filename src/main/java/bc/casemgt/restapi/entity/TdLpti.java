@@ -67,7 +67,8 @@ public class TdLpti implements Serializable {
     private String nomorDokumenAnalisis;
     //	tanggal_dokumen_analisis date NULL,
     @Column(name = "tanggal_dokumen_analisis", nullable = true)
-    private String tanggalDokumenAnalisis;
+    @Temporal(TemporalType.DATE)
+    private Date tanggalDokumenAnalisis;
     //	metode_analisis_intelijen text NULL,
     @Column(name = "metode_analisis_intelijen", nullable = true)
     private String metodeAnalisisIntelijen;
@@ -113,7 +114,8 @@ public class TdLpti implements Serializable {
     private String nipRekam;
     //	waktu_rekam timestamp NULL,
     @Column(name = "waktu_rekam", nullable = true)
-    private String waktuRekam;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date waktuRekam;
     //	nip_update varchar(18) NULL,
     @Column(name = "nip_update", nullable = true)
     private String nipUpdate;

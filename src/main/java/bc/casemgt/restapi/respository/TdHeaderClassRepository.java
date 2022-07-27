@@ -82,6 +82,7 @@ public class TdHeaderClassRepository {
             //String idHeaders = String.valueOf(obj[0]);
             browse.setIdHeader(idHeaders);
             //            String kodeKategori = String.valueOf(obj[0]);
+
             browse.setKodeKantor(kodeKantor);
             //            String kodeDokumen = String.valueOf(obj[0]);
             browse.setKodeDokumen(kodeDokumen);
