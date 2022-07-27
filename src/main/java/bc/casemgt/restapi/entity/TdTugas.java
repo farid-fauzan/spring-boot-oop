@@ -39,7 +39,7 @@ public class TdTugas implements Serializable {
     private String keterangan;
 
 //    nip_rekam varchar(18) NULL,
-    @Column(name = "nip_rekam", nullable = true)
+    @Column(name = "nip_rekam",length = 18,nullable = true)
     private String nipRekam;
 
 //    waktu_rekam timestamp NULL,
@@ -47,7 +47,7 @@ public class TdTugas implements Serializable {
     private Date waktuRekam;
 
 //    nip_update varchar(18) NULL,
-    @Column(name = "nip_update", nullable = true)
+    @Column(name = "nip_update", length = 18,nullable = true)
     private Date nipUdate;
 
 //    waktu_update timestamp NULL,
