@@ -9,4 +9,7 @@ import org.springframework.data.repository.query.Param;
 public interface TdLkaiRepository extends JpaRepository<TdLkai,String> {
     @Query(value = "SELECT * FROM case_management.td_lkai WHERE id_header =:idHeader" , nativeQuery = true)
     TdLkai getLkaiByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "DELETE FROM case_management.td_lkai WHERE id_lkai =:id" , nativeQuery = true)
+    void deleteLkai(@Param("id") String id);
 }

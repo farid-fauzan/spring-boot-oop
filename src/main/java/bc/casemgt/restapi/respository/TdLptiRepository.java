@@ -10,4 +10,7 @@ public interface TdLptiRepository extends JpaRepository<TdLpti, String> {
 
     @Query(value = "SELECT * FROM case_management.td_lpti WHERE id_header =:idHeader" , nativeQuery = true)
     TdLpti getLptiByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "DELETE FROM case_management.td_lpti WHERE id_lpti =:id" , nativeQuery = true)
+    void deleteLpti(@Param("id") String id);
 }

@@ -9,4 +9,7 @@ public interface TdInformasiRepository extends JpaRepository<TdInformasi, String
 
     @Query(value = "SELECT * FROM case_management.td_informasi WHERE id_header =:idHeader" , nativeQuery = true)
     TdInformasi getInformasiByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "DELETE FROM case_management.td_informasi WHERE id_ikhtisar_informasi =:id" , nativeQuery = true)
+    void deleteInfo(@Param("id") String id);
 }

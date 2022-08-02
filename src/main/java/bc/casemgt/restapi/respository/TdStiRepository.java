@@ -10,4 +10,7 @@ public interface TdStiRepository extends JpaRepository<TdSti, String> {
 
     @Query(value = "SELECT * FROM case_management.td_sti WHERE id_header =:idHeader" , nativeQuery = true)
     TdSti getStiByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "DELETE FROM case_management.td_sti WHERE id_sti =:id" , nativeQuery = true)
+    void deleteSti(@Param("id") String id);
 }

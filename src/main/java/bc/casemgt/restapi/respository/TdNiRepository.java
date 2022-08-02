@@ -9,4 +9,7 @@ public interface TdNiRepository extends JpaRepository<TdNi,String> {
 
     @Query(value = "SELECT * FROM case_management.td_ni WHERE id_header =:idHeader" , nativeQuery = true)
     TdNi getNiByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "DELETE FROM case_management.td_ni WHERE id_ni =:id" , nativeQuery = true)
+    void deleteNi(@Param("id") String id);
 }

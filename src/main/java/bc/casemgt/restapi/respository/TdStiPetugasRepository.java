@@ -10,4 +10,7 @@ public interface TdStiPetugasRepository extends JpaRepository<TdStiPetugas, Stri
 
     @Query(value = "SELECT * FROM case_management.td_sti_petugas WHERE id_header =:idHeader" , nativeQuery = true)
     TdStiPetugas getStiPetugasByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "DELETE FROM case_management.td_sti_petugas WHERE id_sti_petugas =:id" , nativeQuery = true)
+    void deleteStiPetugas(@Param("id") String id);
 }

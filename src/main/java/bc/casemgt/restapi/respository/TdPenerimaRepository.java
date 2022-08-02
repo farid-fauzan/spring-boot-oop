@@ -10,4 +10,8 @@ public interface TdPenerimaRepository extends JpaRepository<TdPenerima, String> 
 
     @Query(value = "SELECT * FROM case_management.td_penerima WHERE id_header =:idHeader" , nativeQuery = true)
     TdPenerima getPenerimaByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "DELETE FROM case_management.td_penerima WHERE id_penerima =:id" , nativeQuery = true)
+    void deletePenerima(@Param("id") String id);
 }
+

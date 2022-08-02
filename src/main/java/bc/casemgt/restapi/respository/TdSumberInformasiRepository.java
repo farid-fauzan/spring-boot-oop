@@ -10,4 +10,7 @@ public interface TdSumberInformasiRepository extends JpaRepository<TdSumberInfor
 
     @Query(value = "SELECT * FROM case_management.td_sumber_informasi WHERE id_header =:idHeader" , nativeQuery = true)
     TdSumberInformasi getSumberInfosByidheader(@Param("idHeader") String idHeader);
+
+    @Query(value = "SELECT * FROM case_management.td_sumber_informasi WHERE id_sumber_informasi =:id" , nativeQuery = true)
+    void deleteSumber(@Param("id") String id);
 }
