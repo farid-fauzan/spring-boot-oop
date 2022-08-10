@@ -23,6 +23,12 @@ public class BrowseInformasiController {
         return responseEntity;
     }
 
+    @GetMapping("/get/data-dokumen-referensi")
+    public ResponseEntity browsetdHeader(@RequestParam String kodeDokumen) {
+
+        ResponseEntity responseEntity = informasiService.getTdHeader(kodeDokumen);
+        return responseEntity;
+    }
 
 }
 

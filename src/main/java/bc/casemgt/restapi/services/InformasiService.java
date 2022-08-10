@@ -2,7 +2,9 @@ package bc.casemgt.restapi.services;
 
 
 import bc.casemgt.restapi.entity.Informasi;
+import bc.casemgt.restapi.entity.TdHeader;
 import bc.casemgt.restapi.respository.InformasiRepository;
+import bc.casemgt.restapi.respository.TdHeaderRepository;
 import bc.casemgt.restapi.utility.MessageModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +18,9 @@ import java.util.Map;
 public class InformasiService {
     @Autowired
     private InformasiRepository informasiRepository;
+    @Autowired
+    private TdHeaderRepository tdHeaderRepository;
+
 
 
     public ResponseEntity getDataByid(String idHeader) {
@@ -43,4 +48,31 @@ public class InformasiService {
             return ResponseEntity.ok().body(msg);
         }
     }
+
+    public ResponseEntity getTdHeader(String kodeDokumen) {
+        Map<String, Object> result = new HashMap<>();
+        MessageModel msg = new MessageModel();
+        try{
+
+            List<TdHeader> data = tdHeaderRepository.getTdHeaderByKodeDokumen(kodeDokumen);
+
+            if(data.isEmpty()){
+                msg.setStatus(true);
+                msg.setMessage("Data tidak ditemukan");
+                msg.setData(null);
+                return ResponseEntity.ok().body(msg);
+            }else {
+                msg.setStatus(true);
+                msg.setMessage("Success");
+                result.put("data", data);
+                msg.setData(result);
+                return ResponseEntity.ok().body(msg);
+            }
+        }catch (Exception e){
+            msg.setStatus(false);
+            msg.setMessage(e.getMessage());
+            return ResponseEntity.ok().body(msg);
+        }
+    }
+
 }
