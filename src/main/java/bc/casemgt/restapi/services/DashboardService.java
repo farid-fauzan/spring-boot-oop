@@ -17,14 +17,14 @@ public class DashboardService {
     @Autowired
     private TdHeaderClassRepository tdHeaderClassRepository;
 
-    public ResponseEntity getDataHeader(String idHeader, String nomorDokumen, String nipRekam,Integer page) {
+    public ResponseEntity getDataHeader(String idHeader, String nomorDokumen, String kodeDokumen, String kodeKategori, String nipRekam,Integer page) {
         Map<String, Object> result = new HashMap<>();
         MessageModel msg = new MessageModel();
         Integer offset = (page -1) * 10;
         try{
 
-            List<TdHeaderPojo> dataRespon = tdHeaderClassRepository.getDataHeader(idHeader, nomorDokumen,
-                    nipRekam, offset);
+            List<TdHeaderPojo> dataRespon = tdHeaderClassRepository.getDataHeader(idHeader, nomorDokumen, kodeDokumen,
+                    kodeKategori, nipRekam, offset);
 
             if(dataRespon.isEmpty()){
                 msg.setStatus(true);

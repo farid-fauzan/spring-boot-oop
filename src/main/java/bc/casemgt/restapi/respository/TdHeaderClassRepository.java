@@ -15,7 +15,7 @@ public class TdHeaderClassRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<TdHeaderPojo> getDataHeader(String idHeader, String nomorDokumen, String nipRekam,
+    public List<TdHeaderPojo> getDataHeader(String idHeader, String nomorDokumen, String kodeDokumen, String kodeKategori, String nipRekam,
                                             Integer offset)
     {
 
@@ -28,6 +28,12 @@ public class TdHeaderClassRepository {
         }
         if(nipRekam !=null){
             qb.append("and nip_rekam ='"+nipRekam+"'\n");
+        }
+        if(kodeDokumen !=null){
+            qb.append("and kode_dokumen ='"+kodeDokumen+"'\n");
+        }
+        if(kodeKategori !=null){
+            qb.append("and kode_kategori ='"+kodeKategori+"'\n");
         }
 
 
@@ -51,8 +57,8 @@ public class TdHeaderClassRepository {
             Object[] obj = (Object[]) itr.next();
 
             String idHeaders = String.valueOf(obj[0]);
-            String kodeKategori = String.valueOf(obj[1]);
-            String kodeDokumen = String.valueOf(obj[2]);
+            String kodeKategoris = String.valueOf(obj[1]);
+            String kodeDokumens = String.valueOf(obj[2]);
             String nomorDokumens = String.valueOf(obj[3]);
             String tanggalDokumen = String.valueOf(obj[4]);
             String kodeKantor = String.valueOf(obj[5]);
@@ -82,10 +88,11 @@ public class TdHeaderClassRepository {
             //String idHeaders = String.valueOf(obj[0]);
             browse.setIdHeader(idHeaders);
             //            String kodeKategori = String.valueOf(obj[0]);
-
+            browse.setKodeKategori(kodeKategoris);
+            //            String kodeKantor = String.valueOf(obj[0]);
             browse.setKodeKantor(kodeKantor);
             //            String kodeDokumen = String.valueOf(obj[0]);
-            browse.setKodeDokumen(kodeDokumen);
+            browse.setKodeDokumen(kodeDokumens);
             //            String nomorDokumens = String.valueOf(obj[0]);
             browse.setNomorDokumen(nomorDokumens);
             //            String tanggalDokumen = String.valueOf(obj[0]);

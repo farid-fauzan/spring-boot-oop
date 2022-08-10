@@ -16,9 +16,9 @@ public class DashboardController {
     private DashboardService dashboardService;
 
     @GetMapping("/get-data-header")
-    public ResponseEntity browseDataInformasi(String idHeader, String nomorDokumen, String nipRekam,@RequestParam(value = "page", defaultValue = "1") Integer page){
+    public ResponseEntity browseDataInformasi(String idHeader, String nomorDokumen, String kodeDokumen, String kodeKategori, String nipRekam,@RequestParam(value = "page", defaultValue = "1") Integer page){
 
-        ResponseEntity responseEntity = dashboardService.getDataHeader(idHeader, nomorDokumen, nipRekam, page);
+        ResponseEntity responseEntity = dashboardService.getDataHeader(idHeader, nomorDokumen, kodeDokumen, kodeKategori, nipRekam, page);
         return responseEntity;
     }
 }
